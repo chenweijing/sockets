@@ -27,11 +27,16 @@ typedef std::function<void (int fd, char * buff, int size)> read_callback_t;
 // 服务器启动
 // \is_block 是否阻塞
 int start(bool is_block, char * port);
+
+// 启动服务
+int StartServer(int port);
+
 // 客户端连接
 bool connect(const std::string & server, int32_t port);
 // 设置新的链接回调
 void setAcceptCallback(const std::shared_ptr<accept_callback_t> & accept_callback);
 // 设置读取数据回调
 void setReadCallback(const std::shared_ptr<read_callback_t> & read_callback);
+
 }
 #endif

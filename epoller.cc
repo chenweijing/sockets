@@ -1,3 +1,18 @@
+// Author : chenwj
+// Time   : 2017/1/16
+// Copyright :All rights reserved by chenwj @copyright 2017 ~ 2018.
+// 
+// Use of this source code is governed by a BSD-style license
+// that can be found in the License file.
+// 
+// Decription: base linux epoll network interface. Use EPOLLET and EPOLLLT
+// style. This program surpot 100*10000 connect sockets.
+// At the Begin, app will new 2G memory that being provied for server.
+// Four(4) or more worker thread will start to deal with comming data.
+// For every thread, had a index queue, to comsumer the data by produer/comsumer model.
+// 
+////////////////////////////////////////////////////////////////////////////////////////
+
 // system headers
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -18,8 +33,8 @@
 /*
  * max connections
  * s can be changed in /etc/security/limits.conf - it's the nofile param.
-However, if you're closing your sockets correctly, you shouldn't receive this unless you're opening a lot of simulataneous connections. 
-It sounds like something is preventing your sockets from being closed appropriately. I would verify that they are being handled properly.
+ * However, if you're closing your sockets correctly, you shouldn't receive this unless you're opening a lot of simulataneous connections. 
+ * It sounds like something is preventing your sockets from being closed appropriately. I would verify that they are being handled properly.
 */
 
 
